@@ -99,9 +99,6 @@ export default function Education() {
           >
             Formation
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Parcours académique — Baccalauréat → Licence → Diplôme d&apos;ingénieur
-          </p>
         </motion.div>
 
         <motion.div

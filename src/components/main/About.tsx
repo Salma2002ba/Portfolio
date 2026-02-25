@@ -15,11 +15,11 @@ import { profile } from '@/data/profile'
 const aboutPoints = [
   {
     icon: FaGraduationCap,
-    text: 'École d’ingénieur informatique — Polytech Marseille',
+    text: 'École d’ingénieur informatique - Polytech Marseille',
   },
   {
     icon: FaIndustry,
-    text: 'Alternance CEA Cadarache — environnement industriel, données & infrastructure',
+    text: 'Alternance CEA Cadarache - environnement industriel, données & infrastructure',
   },
   {
     icon: FaCloud,
@@ -27,11 +27,11 @@ const aboutPoints = [
   },
   {
     icon: FaSearch,
-    text: 'Recherche DevSecOps — Université de Montréal',
+    text: 'Stage de recherche DevSecOps - Université de Montréal',
   },
   {
     icon: FaRocket,
-    text: 'Objectif : Ingénieure Cloud / DevOps en sortie d’études',
+    text: 'Objectif : Ingénieure DevOps/Cloud en sortie d’études',
   },
 ]
 
