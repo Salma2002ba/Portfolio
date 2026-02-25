@@ -107,6 +107,8 @@ export interface EngineeringNoteItem {
   tags: string[]
   href?: string
   excerpt?: string
+  /** Afficher en premier avec icône épinglé */
+  pinned?: boolean
 }
 
 export interface ResourceItem {
@@ -114,6 +116,8 @@ export interface ResourceItem {
   url: string
   note: string
   type?: 'article' | 'tool' | 'repo'
+  /** Afficher en premier avec icône épinglé */
+  pinned?: boolean
 }
 
 export const profile: ProfileData = {
@@ -417,11 +421,11 @@ achievements: [
     'DevSecOps',
   ],
   engineeringNotes: [
-    { title: 'Retour d’expérience CI/CD en environnement industriel', date: '2024', tags: ['CI/CD', 'DevOps', 'Industrie'], excerpt: 'Mise en place de pipelines et bonnes pratiques.' },
+    { title: 'Retour d’expérience CI/CD en environnement industriel', date: '2024', tags: ['CI/CD', 'DevOps', 'Industrie'], excerpt: 'Mise en place de pipelines et bonnes pratiques.', pinned: true },
     { title: 'Apprentissages DevSecOps — supply chain', date: '2025', tags: ['DevSecOps', 'Recherche'], href: '#', excerpt: 'Sécurisation des chaînes d’approvisionnement logicielles.' },
   ],
   resources: [
-    { title: 'Documentation Terraform best practices', url: 'https://developer.hashicorp.com/terraform', note: 'Référence pour structurer des modules IaC.', type: 'article' },
+    { title: 'Documentation Terraform best practices', url: 'https://developer.hashicorp.com/terraform', note: 'Référence pour structurer des modules IaC.', type: 'article', pinned: true },
     { title: 'SLSA — Supply-chain Levels for Software Artifacts', url: 'https://slsa.dev', note: 'Framework utile pour la maturité DevSecOps.', type: 'article' },
     { title: 'Awesome DevOps', url: 'https://github.com/awesome-devops', note: 'Curated list pour découvrir outils et pratiques.', type: 'repo' },
   ],
