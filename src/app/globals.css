@@ -406,6 +406,45 @@ html.dark .scanlines::after {
     background-size: 50px 50px;
   }
 
+  /* Section "Au-delà du code" — moderne, léger cyberpunk (mode clair) */
+  .beyond-code-card {
+    border-radius: 1.5rem;
+    border: 1px solid oklch(var(--border) / 0.8);
+    box-shadow:
+      0 0 0 1px oklch(var(--primary) / 0.06),
+      0 4px 6px -1px oklch(var(--foreground) / 0.04),
+      0 2px 4px -2px oklch(var(--foreground) / 0.02);
+    transition: box-shadow 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
+  }
+  .beyond-code-card:hover,
+  .beyond-code-card:has(.beyond-code-column:hover) {
+    border-color: oklch(var(--primary) / 0.15);
+    box-shadow:
+      0 0 0 1px oklch(var(--primary) / 0.12),
+      0 0 20px oklch(var(--primary) / 0.08),
+      0 0 36px oklch(var(--accent) / 0.06),
+      0 10px 25px -5px oklch(var(--foreground) / 0.08),
+      0 4px 6px -4px oklch(var(--foreground) / 0.04);
+    transform: translateY(-2px);
+  }
+  .beyond-code-column {
+    border-radius: 1.25rem;
+    transition: box-shadow 0.4s ease, transform 0.4s ease, background-color 0.4s ease;
+  }
+  .beyond-code-column:hover {
+    box-shadow:
+      0 0 16px oklch(var(--primary) / 0.06),
+      0 0 28px oklch(var(--accent) / 0.04);
+    transform: translateY(-3px);
+  }
+  .beyond-code-item {
+    border-radius: 1rem;
+    transition: box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease, transform 0.35s ease;
+  }
+  .beyond-code-item:hover {
+    box-shadow: 0 0 12px oklch(var(--primary) / 0.06), 0 2px 8px oklch(var(--foreground) / 0.04);
+  }
+
   /* Modern Backgrounds */
   .bg-modern-card {
     background: oklch(var(--card) / 0.8);

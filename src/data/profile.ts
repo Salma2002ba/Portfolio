@@ -87,8 +87,12 @@ export interface ProfileData {
   projects: ProjectItem[]
   experiences: ExperienceItem[]
   skills: SkillItem[]
-  /** Soft skills (compétences relationnelles / comportementales) */
+  /** Soft skills (affichés dans la section Langues, Soft Skills & Centres d'intérêt) */
   softSkills: string[]
+  /** Langues (section Langues, Soft Skills & Centres d'intérêt) */
+  languages?: { language: string; level: string }[]
+  /** Centres d'intérêt (section Langues, Soft Skills & Centres d'intérêt) */
+  interests?: string[]
   /** SEO: keywords for footer and meta */
   keywords: string[]
   /** Notes d'ingénierie — mini articles / retours d'expérience */
@@ -378,12 +382,24 @@ achievements: [
     { skill_name: 'Artifact Analysis', Image: '/jar.svg', width: 70, height: 70 }
   ],
   softSkills: [
-    'Travail en équipe',
-    'Communication',
-    'Résolution de problèmes',
-    'Adaptabilité',
-    'Gestion du temps',
-    'Esprit d\'analyse',
+    'Pilotage de projet',
+  'Autonomie',
+  'Analyse systémique',
+  'Résolution de problèmes complexes',
+  'Adaptabilité',  
+  'Communication technique',
+  ],
+  languages: [
+    { language: 'Français', level: 'courant' },
+    { language: 'Anglais', level: 'professionnel' },
+    { language: 'Arabe', level: 'Langue maternelle' },
+  ],
+  interests: [
+    'Veille technologique',
+    'Running',
+    'Cyclisme',
+    'Danse',
+
   ],
   keywords: [
     'Salma BABA',

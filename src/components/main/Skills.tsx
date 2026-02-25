@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Skill, skills } from '@/constants'
 import SkillDataProvider from '../sub/SkillDataProvider'
-import { profile } from '@/data/profile'
 
 const uniqueSkills: Skill[] = Array.from(
   skills
@@ -81,17 +80,13 @@ const Skills = () => {
           title="Compétences"
           className="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent mb-2"
         >
-          Compétences
+          Compétences techniques
         </h2>
-        <p className="text-lg text-muted-foreground font-medium">
-          Compétences techniques et soft skills au service de vos projets.
-        </p>
+
       </motion.div>
 
       {/* Compétences techniques */}
       <div className="w-full max-w-6xl relative z-10">
-        <h3 className="text-xl font-semibold text-foreground mb-2 text-center">Compétences techniques</h3>
-        <p className="text-sm text-muted-foreground text-center mb-6">DevOps, cloud, CI/CD, conteneurisation, IaC</p>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -157,39 +152,7 @@ const Skills = () => {
           </motion.div>
         )}
 
-        <motion.p 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-8 text-center text-base text-muted-foreground"
-        >
-          …et bien d'autres technologies que j'explore et maîtrise au quotidien.
-        </motion.p>
-
-        {/* Soft skills */}
-        {profile.softSkills?.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-10 pt-8 border-t border-border"
-          >
-            <h3 className="text-xl font-semibold text-foreground mb-2 text-center">Soft skills</h3>
-            <p className="text-sm text-muted-foreground text-center mb-4">Compétences relationnelles et comportementales</p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {profile.softSkills.map((skill, i) => (
-                <span
-                  key={i}
-                  className="px-4 py-2 rounded-full bg-primary/10 text-foreground text-sm font-medium border border-primary/20"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        )}
+        
       </div>
     </section>
   )

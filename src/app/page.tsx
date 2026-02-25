@@ -5,6 +5,7 @@ import Education from '@/components/main/Education'
 import Hero from '@/components/main/Hero'
 import Projects from '@/components/main/Projects'
 import ResumeSection from '@/components/main/Resume'
+import LanguesSoftSkillsInterets from '@/components/main/LanguesSoftSkillsInterets'
 import Skills from '@/components/main/Skills'
 import Timeline from '@/components/main/Timeline'
 import { Toaster } from 'react-hot-toast'
@@ -37,6 +38,7 @@ export default function Home() {
         <Education />
         <Timeline />
         <Skills />
+        <LanguesSoftSkillsInterets />
         <Projects />
         <BlogsSection />
         <ContactUs />
