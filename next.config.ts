@@ -9,7 +9,15 @@ setupDevPlatform().catch(console.error)
 
 import type { NextConfig } from 'next'
 
+const isGitHubPages = process.env.GITHUB_PAGES === 'true'
+const basePath = process.env.BASE_PATH ?? ''
+
 const nextConfig: NextConfig = {
+  ...(isGitHubPages && {
+    output: 'export',
+    basePath: basePath || undefined,
+    assetPrefix: basePath ? `${basePath}/` : undefined,
+  }),
   webpack: (config) => {
     return config
   },
