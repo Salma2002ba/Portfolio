@@ -13,10 +13,35 @@ import {
 import { ThemeToggle } from '@/hooks/use-toogle'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { FaBlog, FaBriefcase, FaCode, FaEnvelope, FaProjectDiagram, FaUser } from 'react-icons/fa'
+import { motion } from 'framer-motion'
+import { FaBlog, FaBriefcase, FaCode, FaEnvelope, FaGraduationCap, FaProjectDiagram, FaUser } from 'react-icons/fa'
 import { Button } from '../ui/button'
 import { TrackableElement, TrackableContact } from '@/components/analytics/TrackableElement'
 import { useAnalyticsContext } from '@/components/analytics/AnalyticsProvider'
+
+/** Barre gradient sous le header — même animation que NavBody (width, y) */
+function NavBarGradientBar({ visible }: { visible?: boolean }) {
+  return (
+    <motion.div
+      className="mx-auto hidden w-full max-w-7xl justify-center self-start lg:flex"
+      style={{ minWidth: '200px' }}
+      animate={{
+        width: visible ? '40%' : '100%',
+        y: visible ? 20 : 0,
+      }}
+      transition={{
+        type: 'spring',
+        stiffness: 200,
+        damping: 50,
+      }}
+    >
+      <div
+        className="h-0.5 w-full rounded-full bg-gradient-to-r from-primary via-accent to-primary/80 shadow-sm"
+        aria-hidden
+      />
+    </motion.div>
+  )
+}
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -24,11 +49,12 @@ export function Navbar() {
   const { trackClick } = useAnalyticsContext()
 
   const navItems = [
-    { name: 'About', link: '#about', icon: <FaUser /> },
-    { name: 'Skills', link: '#skills', icon: <FaCode /> },
-    { name: 'Experience', link: '#experience', icon: <FaBriefcase /> },
-    { name: 'Projects', link: '#projects', icon: <FaProjectDiagram /> },
-    { name: 'Blogs', link: '#blogs', icon: <FaBlog /> },
+    { name: 'À propos', link: '#about', icon: <FaUser /> },
+    { name: 'Formation', link: '#education', icon: <FaGraduationCap /> },
+    { name: 'Expérience', link: '#experience', icon: <FaBriefcase /> },
+    { name: 'Compétences', link: '#competences', icon: <FaCode /> },
+    { name: 'Projets', link: '#projects', icon: <FaProjectDiagram /> },
+    { name: 'Blog', link: '#blogs', icon: <FaBlog /> },
   ]
 
   useEffect(() => {
@@ -38,7 +64,7 @@ export function Navbar() {
   }, [])
 
   return (
-    <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-300`}>
+    <div className="fixed top-0 left-0 w-full z-50 transition-all duration-300">
       <NavbarWrapper className="flex flex-col items-center justify-between gap-4 px-4 py-2">
         <NavBody>
           <NavbarLogo isScrolled={isScrolled} />
@@ -49,7 +75,7 @@ export function Navbar() {
             <ThemeToggle />
             <TrackableContact method="navbar-contact">
               <Button
-                title="Contact me"
+                title="Me contacter"
                 variant="default"
                 className="rounded-full z-50"
                 onClick={() => {
@@ -76,7 +102,7 @@ export function Navbar() {
               <TrackableElement 
                 key={`mobile-link-${item.name}`}
                 elementId={`mobile-nav-${item.name.toLowerCase()}`}
-                elementText={`Mobile Nav: ${item.name}`}
+                elementText={`Nav mobile : ${item.name}`}
               >
                 <Link
                   href={item.link}
@@ -86,7 +112,7 @@ export function Navbar() {
                       .getElementById(item.link.slice(1))
                       ?.scrollIntoView({ behavior: 'smooth' })
                   }}
-                  className="relative text-neutral-600 dark:text-neutral-300 flex gap-2 items-center"
+                  className="relative text-muted-foreground hover:text-primary flex gap-2 items-center"
                 >
                   {item.icon} <span>{item.name}</span>
                 </Link>
@@ -96,7 +122,7 @@ export function Navbar() {
               <ThemeToggle />
               <TrackableContact method="mobile-navbar-contact">
                 <Button
-                  title="Contact me"
+                  title="Me contacter"
                   onClick={() => {
                     setIsMobileMenuOpen(false)
                     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
@@ -110,12 +136,8 @@ export function Navbar() {
             </div>
           </MobileNavMenu>
         </MobileNav>
+        <NavBarGradientBar />
       </NavbarWrapper>
-      <div className="flex items-center justify-center">
-        {!isScrolled && (
-          <hr className="h-1/2 w-[90vw] rounded-full border-gray-500 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md" />
-        )}
-      </div>
     </div>
   )
 }

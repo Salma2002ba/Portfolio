@@ -87,11 +87,11 @@ export default function RootLayout({
         />
         <link rel="canonical" href={profile.siteUrl} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#3b82f6" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#1e40af" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#030712" media="(prefers-color-scheme: dark)" />
         <meta name="color-scheme" content="light dark" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden scanlines`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

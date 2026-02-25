@@ -176,23 +176,23 @@ export function CertificationsSection() {
   }
 
   return (
-    <section id="certifications" className="w-full py-20 bg-background">
+    <section id="certifications" className="w-full py-14 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <div className="flex flex-col items-center">
-            <div className="flex items-center gap-4 mb-4">
+            <div className="flex items-center gap-4 mb-2">
               <Award className="h-8 w-8 text-primary" />
               <h1 className="text-4xl md:text-5xl font-bold text-foreground">
                 Certifications
               </h1>
             </div>
-            <p className="text-muted-foreground mt-2 max-w-3xl mx-auto text-base font-semibold md:text-lg italic">
+            <p className="text-muted-foreground mt-1 max-w-3xl mx-auto text-base font-semibold md:text-lg italic">
               Industry-recognized credentials validating my expertise in cloud technologies and DevOps practices.
             </p>
           </div>
@@ -251,7 +251,7 @@ export function CertificationsSection() {
 
           {/* Show Less button when showAll is true - only on screens < 650px */}
           {showAll && certificationsData.length > 2 && (
-            <div className="max-[649px]:flex justify-center mt-8 min-[650px]:hidden">
+            <div className="max-[649px]:flex justify-center mt-6 min-[650px]:hidden">
               <button
                 onClick={toggleShowAll}
                 className="px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
@@ -279,7 +279,7 @@ export function CertificationsSection() {
 
         {/* Additional note */}
         <motion.div
-          className="text-center mt-12"
+          className="text-center mt-8"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

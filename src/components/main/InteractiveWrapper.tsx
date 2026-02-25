@@ -134,7 +134,7 @@ export default function InteractiveWrapper({ children }: Props) {
   }, 5000);
 
   return (
-    <div className="flex flex-col gap-10" onMouseMove={handleMouseMove} onClick={updateClickAnalyticsData}>
+    <div className="flex flex-col gap-0" onMouseMove={handleMouseMove} onClick={updateClickAnalyticsData}>
       {children}
     </div>
   )

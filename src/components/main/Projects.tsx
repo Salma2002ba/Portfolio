@@ -84,45 +84,45 @@ const Projects = () => {
   const totalProjects = projectsData.length // only added: data to show
 
   return (
-    <section id="projects" className="relative py-20 overflow-hidden">
+    <section id="projects" className="relative py-14 overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 -z-10">
         {/* Floating Geometric Shapes */}
         <div className="absolute top-32 left-16 w-28 h-28 bg-primary/10 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute top-80 right-24 w-20 h-20 bg-blue-500/20 rounded-lg rotate-45 animate-bounce"></div>
+        <div className="absolute top-80 right-24 w-20 h-20 bg-accent/20 rounded-lg rotate-45 animate-bounce"></div>
         <div className="absolute bottom-60 left-1/3 w-16 h-16 bg-primary/15 rounded-full animate-ping"></div>
-        <div className="absolute bottom-32 right-1/4 w-24 h-24 bg-blue-400/10 rounded-lg rotate-12 float-animation"></div>
+        <div className="absolute bottom-32 right-1/4 w-24 h-24 bg-secondary/10 rounded-lg rotate-12 float-animation"></div>
 
         {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+        <div className="absolute inset-0 bg-grid-section"></div>
 
         {/* Gradient Orbs */}
-        <div className="absolute top-1/4 right-1/2 translate-x-1/2 w-96 h-96 bg-gradient-to-r from-primary/20 via-blue-500/10 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gradient-to-l from-blue-400/15 via-primary/10 to-transparent rounded-full blur-2xl"></div>
+        <div className="absolute top-1/4 right-1/2 translate-x-1/2 w-96 h-96 bg-gradient-to-r from-primary/20 via-accent/10 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gradient-to-l from-secondary/15 via-primary/10 to-transparent rounded-full blur-2xl"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h1 title="My Projects" className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-foreground via-primary to-blue-500 bg-clip-text text-transparent mb-4">
-            My Projects
+          <h1 title="Mes projets" className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent mb-2">
+            Mes projets
           </h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-3">
-            A collection of innovative projects showcasing technical expertise & creativity.
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-2">
+            Projets concrets : pipelines CI/CD, infrastructure as Code, conteneurisation et cloud.
           </p>
           <p className="text-sm text-muted-foreground font-medium">
-            Total projects: {totalProjects}
+            {totalProjects} projet{totalProjects > 1 ? 's' : ''} au total
           </p>
         </motion.div>
 
         {/* Tag Filter Section */}
         <motion.div
-          className="mb-12"
+          className="mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -132,14 +132,14 @@ const Projects = () => {
             <div className="relative bg-card/60 backdrop-blur-sm border border-primary/20 rounded-2xl p-6 shadow-lg">
               <div className="flex items-center justify-center gap-2 mb-4">
                 <Tags className="h-5 w-5 text-primary" />
-                <h3 title="Filter by tags" className="text-lg font-medium">Filter by tags</h3>
+                <h3 title="Filtrer par tags" className="text-lg font-medium">Filtrer par tags</h3>
                 {selectedTags.length > 0 && (
                   <button
-                    title="Clear all filters"
+                    title="Réinitialiser les filtres"
                     onClick={clearFilters}
                     className="text-sm text-muted-foreground hover:text-primary ml-2 underline transition-colors"
                   >
-                    Clear all
+                    Tout effacer
                   </button>
                 )}
               </div>
@@ -148,7 +148,7 @@ const Projects = () => {
                 {allTags.map(tag => (
                   <Badge
                     key={tag}
-                    title={`Filter by ${tag} (Project)`}
+                    title={`Filtrer par ${tag} (projet)`}
                     variant={selectedTags.includes(tag) ? "default" : "outline"}
                     className="cursor-pointer px-3 py-1 rounded-full transition-all hover:scale-105 hover:shadow-md"
                     onClick={() => toggleTag(tag)}
@@ -179,7 +179,7 @@ const Projects = () => {
                     <div className="flex flex-wrap gap-3 ">
                       <Badge asChild variant="secondary" className="gap-1 rounded-full">
                         <a
-                          title={`View ${project.title} on GitHub`}
+                          title={`Voir ${project.title} sur GitHub`}
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -192,7 +192,7 @@ const Projects = () => {
 
                       {"live" in project && (
                         <a
-                          title={`View ${project.title} live demo`}
+                          title={`Voir la démo en ligne de ${project.title}`}
                           href={project.live as string}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -204,7 +204,7 @@ const Projects = () => {
                       )}
                       {"video" in project && (
                         <a
-                          title={`Watch ${project.title} video demo`}
+                          title={`Voir la vidéo de démo de ${project.title}`}
                           href={project.video as string}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -215,7 +215,7 @@ const Projects = () => {
                       )}
                       {"blog" in project && (
                         <a
-                          title={`Read ${project.title} blog post`}
+                          title={`Lire l'article sur ${project.title}`}
                           href={project.blog as string}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -246,11 +246,11 @@ const Projects = () => {
               {isFifthProject && (
                 <div className="absolute inset-0 flex items-center justify-center z-10">
                   <button
-                    title={`Show All Projects (${filteredProjects.length - 4})`}
+                    title={`Afficher tous les projets (${filteredProjects.length - 4})`}
                     onClick={toggleShowAll}
-                    className="px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors shadow-lg"
+                    className="px-6 py-3 bg-gradient-to-r from-primary via-accent to-secondary text-white rounded-full font-medium shadow-lg hover:shadow-xl hover:opacity-95 transition-all duration-300"
                   >
-                    Show All ({filteredProjects.length}) Projects
+                    Tout afficher ({filteredProjects.length} projets)
                   </button>
                 </div>
               )}
@@ -260,22 +260,22 @@ const Projects = () => {
 
         {/* Show message when no projects match the filter */}
         {filteredProjects.length === 0 && (
-          <div className="col-span-full text-center py-12">
+          <div className="col-span-full text-center py-8">
             <p className="text-muted-foreground text-lg">
-              No projects match the selected tags. Try selecting different tags.
+              Aucun projet ne correspond aux tags sélectionnés. Essayez d'autres tags.
             </p>
           </div>
         )}
 
         {/* Show Less button when showAll is true */}
         {showAll && filteredProjects.length > 5 && (
-          <div className="col-span-full text-center mt-8">
+          <div className="col-span-full text-center mt-6">
             <button
-              title="Show Less Projects"
+              title="Afficher moins de projets"
               onClick={toggleShowAll}
               className="px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
             >
-              Show Less
+              Voir moins
             </button>
           </div>
         )}

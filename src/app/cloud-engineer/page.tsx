@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { profile } from '@/data/profile'
 
 export const metadata: Metadata = {
-  title: `Cloud Engineer Portfolio - ${profile.name}`,
+  title: `Ingénieur Cloud - Portfolio ${profile.name}`,
   description: profile.bio.join(' '),
   keywords: profile.keywords,
   alternates: {
@@ -17,41 +17,41 @@ export default function CloudEngineerPage() {
       <div className="container mx-auto px-4 py-16 max-w-4xl">
         <header className="mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Cloud Engineer Portfolio - {profile.name}
+            Ingénieur Cloud — {profile.name}
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed">
-            Certified cloud engineer with expertise in designing, implementing, and managing 
-            scalable cloud infrastructure across AWS, Azure, and Google Cloud Platform.
+            Ingénieure cloud : conception, mise en œuvre et gestion d&apos;infrastructures 
+            scalables sur AWS, Azure et Google Cloud Platform.
           </p>
         </header>
 
         <main>
           <section className="mb-12">
-            <h2 className="text-3xl font-semibold mb-6 text-foreground">Cloud Engineering Services</h2>
+            <h2 className="text-3xl font-semibold mb-6 text-foreground">Services d&apos;ingénierie cloud</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-card p-6 rounded-lg border">
-                <h3 className="text-xl font-semibold mb-4 text-primary">Cloud Architecture & Design</h3>
+                <h3 className="text-xl font-semibold mb-4 text-primary">Architecture & conception cloud</h3>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• Scalable multi-tier architectures</li>
-                  <li>• Microservices and serverless designs</li>
-                  <li>• High availability and disaster recovery</li>
-                  <li>• Cost-optimized cloud solutions</li>
+                  <li>• Architectures multi-niveaux scalables</li>
+                  <li>• Microservices et serverless</li>
+                  <li>• Haute disponibilité et reprise après sinistre</li>
+                  <li>• Solutions cloud optimisées en coûts</li>
                 </ul>
               </div>
               <div className="bg-card p-6 rounded-lg border">
-                <h3 className="text-xl font-semibold mb-4 text-primary">Cloud Migration</h3>
+                <h3 className="text-xl font-semibold mb-4 text-primary">Migration cloud</h3>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• Legacy system modernization</li>
-                  <li>• Lift-and-shift migrations</li>
-                  <li>• Application refactoring for cloud</li>
-                  <li>• Zero-downtime migration strategies</li>
+                  <li>• Modernisation de systèmes legacy</li>
+                  <li>• Migrations lift-and-shift</li>
+                  <li>• Refactoring applicatif pour le cloud</li>
+                  <li>• Stratégies de migration sans interruption</li>
                 </ul>
               </div>
             </div>
           </section>
 
           <section className="mb-12">
-            <h2 className="text-3xl font-semibold mb-6 text-foreground">Cloud Platform Expertise</h2>
+            <h2 className="text-3xl font-semibold mb-6 text-foreground">Expertise plateformes cloud</h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
                 <div className="bg-orange-100 dark:bg-orange-900/20 p-4 rounded-lg mb-4">
@@ -90,25 +90,25 @@ export default function CloudEngineerPage() {
           </section>
 
           <section className="mb-12">
-            <h2 className="text-3xl font-semibold mb-6 text-foreground">Cloud Engineering Approach</h2>
+            <h2 className="text-3xl font-semibold mb-6 text-foreground">Approche ingénierie cloud</h2>
             <div className="bg-card p-6 rounded-lg border">
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-lg font-semibold mb-4 text-foreground">Security & Compliance</h3>
+                  <h3 className="text-lg font-semibold mb-4 text-foreground">Sécurité & conformité</h3>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>• Identity and Access Management (IAM)</li>
-                    <li>• Network security and encryption</li>
-                    <li>• Compliance frameworks (SOC 2, GDPR)</li>
-                    <li>• Security monitoring and incident response</li>
+                    <li>• IAM (Identity and Access Management)</li>
+                    <li>• Sécurité réseau et chiffrement</li>
+                    <li>• Cadres de conformité (SOC 2, RGPD)</li>
+                    <li>• Monitoring et réponse aux incidents</li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-4 text-foreground">Performance & Optimization</h3>
+                  <h3 className="text-lg font-semibold mb-4 text-foreground">Performance & optimisation</h3>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>• Auto-scaling and load balancing</li>
-                    <li>• Cost optimization strategies</li>
-                    <li>• Performance monitoring and tuning</li>
-                    <li>• Resource right-sizing</li>
+                    <li>• Auto-scaling et répartition de charge</li>
+                    <li>• Optimisation des coûts cloud</li>
+                    <li>• Monitoring et tuning des perfs</li>
+                    <li>• Right-sizing des ressources</li>
                   </ul>
                 </div>
               </div>
@@ -116,13 +116,13 @@ export default function CloudEngineerPage() {
           </section>
 
           <section className="mb-12">
-            <h2 className="text-3xl font-semibold mb-6 text-foreground">Featured Cloud Projects</h2>
+            <h2 className="text-3xl font-semibold mb-6 text-foreground">Projets cloud à la une</h2>
             <div className="space-y-6">
               <div className="bg-card p-6 rounded-lg border">
-                <h3 className="text-lg font-semibold mb-2 text-primary">Multi-Cloud Infrastructure</h3>
+                <h3 className="text-lg font-semibold mb-2 text-primary">Infrastructure multi-cloud</h3>
                 <p className="text-muted-foreground mb-3">
-                  Designed and implemented a hybrid multi-cloud architecture spanning AWS and Azure, 
-                  providing high availability and disaster recovery capabilities.
+                  Conception et mise en place d&apos;une architecture hybride multi-cloud (AWS et Azure) 
+                  avec haute disponibilité et reprise après sinistre.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">AWS</span>
@@ -132,10 +132,10 @@ export default function CloudEngineerPage() {
                 </div>
               </div>
               <div className="bg-card p-6 rounded-lg border">
-                <h3 className="text-lg font-semibold mb-2 text-primary">Serverless Application Platform</h3>
+                <h3 className="text-lg font-semibold mb-2 text-primary">Plateforme serverless</h3>
                 <p className="text-muted-foreground mb-3">
-                  Built a fully serverless application platform using AWS Lambda, API Gateway, and DynamoDB, 
-                  reducing operational costs by 60% while improving scalability.
+                  Plateforme applicative 100 % serverless (AWS Lambda, API Gateway, DynamoDB) : 
+                  réduction des coûts opérationnels et scalabilité améliorée.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">AWS Lambda</span>
@@ -148,23 +148,23 @@ export default function CloudEngineerPage() {
           </section>
 
           <section className="text-center">
-            <h2 className="text-3xl font-semibold mb-6 text-foreground">Let's Build Your Cloud Solution</h2>
+            <h2 className="text-3xl font-semibold mb-6 text-foreground">Construisons votre solution cloud</h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Ready to leverage the power of cloud computing for your business? Let's discuss your 
-              requirements and design a cloud strategy that drives growth and efficiency.
+              Prêt à tirer parti du cloud pour votre activité ? Discutons de vos besoins et 
+              définissons une stratégie cloud pour la croissance et l&apos;efficacité.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/#contact"
-                className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-accent to-secondary text-white rounded-lg shadow-md hover:shadow-lg hover:opacity-95 transition-all duration-300"
               >
-                Start Your Cloud Journey
+                Démarrer votre projet cloud
               </Link>
               <Link 
                 href="/#projects"
-                className="inline-flex items-center px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-colors"
+                className="inline-flex items-center px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-primary/10 hover:border-accent/50 transition-all duration-300"
               >
-                View Cloud Projects
+                Voir les projets cloud
               </Link>
             </div>
           </section>

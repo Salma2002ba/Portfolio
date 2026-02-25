@@ -35,8 +35,8 @@ export function BlogTile({
         <p className="text-sm text-zinc-500 dark:text-zinc-400">{excerpt}</p>
       </div>
 
-      <Button title={`Read: ${title}`} onClick={onRead} variant="default" className="shrink-0 rounded-none">
-        Read
+      <Button title={`Lire : ${title}`} onClick={onRead} variant="default" className="shrink-0 rounded-none">
+        Lire
       </Button>
     </div>
   )

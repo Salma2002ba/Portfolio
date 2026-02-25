@@ -1,5 +1,7 @@
+import About from '@/components/main/About'
 import { BlogsSection } from '@/components/main/Blogs'
 import ContactUs from '@/components/main/ContactUs'
+import Education from '@/components/main/Education'
 import Hero from '@/components/main/Hero'
 import Projects from '@/components/main/Projects'
 import ResumeSection from '@/components/main/Resume'
@@ -23,20 +25,18 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="min-h-screen min-w-screen" >
-      {/* Hidden SEO content for better indexing */}
-      <div className="sr-only">
-        <h1>{profile.name} - {profile.title} Portfolio</h1>
-        <p>
-          {profile.bio.join(' ')} Browse my projects, skills, and professional experience.
-        </p>
+      {/* Contenu masqué pour SEO / accessibilité — un seul H1 visible (hero) */}
+      <div className="absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0 [clip:rect(0,0,0,0)]" aria-hidden>
+        <p>{profile.bio.join(' ')} Projets, compétences et parcours professionnel.</p>
       </div>
 
       <InteractiveWrapper>
         <Hero />
-        <Skills />
+        <About />
         <ResumeSection />
+        <Education />
         <Timeline />
-        {/* <CertificationsSection /> */}
+        <Skills />
         <Projects />
         <BlogsSection />
         <ContactUs />

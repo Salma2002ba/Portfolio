@@ -3,23 +3,22 @@ import HeroContent from '../sub/HeroContent'
 export function Hero() {
   return (
     <section
-      id="about"
+      id="hero"
       className="relative flex flex-col min-h-screen w-full items-center justify-center overflow-hidden"
     >
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 -z-10">
-        {/* Floating Geometric Shapes */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-blue-500/20 rounded-lg rotate-45 animate-bounce"></div>
-        <div className="absolute bottom-32 left-1/4 w-16 h-16 bg-primary/15 rounded-full animate-ping"></div>
-        <div className="absolute bottom-20 right-1/3 w-20 h-20 bg-blue-400/10 rounded-lg rotate-12 float-animation"></div>
-        
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
-        
-        {/* Gradient Orbs */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-primary/20 via-blue-500/10 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-l from-blue-400/15 via-primary/10 to-transparent rounded-full blur-2xl"></div>
+      {/* Background — motifs, blobs animés, palette bleu/rose/vert */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        {/* Blobs flous animés */}
+        <div className="absolute top-20 left-10 w-40 h-40 bg-primary/[0.07] rounded-full blur-[80px] animate-pulse" />
+        <div className="absolute top-1/3 right-10 w-56 h-56 bg-accent/[0.06] rounded-full blur-[100px] float-animation" />
+        <div className="absolute bottom-1/3 left-1/4 w-48 h-48 bg-secondary/[0.06] rounded-full blur-[90px] animate-pulse" />
+        <div className="absolute bottom-20 right-1/3 w-32 h-32 bg-primary/[0.06] rounded-3xl blur-[60px] rotate-12 float-animation" />
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-accent/[0.04] rounded-full blur-[110px] -translate-x-1/2 -translate-y-1/2 animate-pulse" />
+        <div className="absolute top-40 right-1/3 w-24 h-24 bg-secondary/[0.05] rounded-lg blur-[50px] rotate-45 animate-bounce" />
+        <div className="absolute bottom-40 left-12 w-36 h-36 bg-primary/[0.05] rounded-full blur-[70px] float-animation" />
+
+        {/* Grille (bleu en clair, cyan en sombre) */}
+        <div className="absolute inset-0 opacity-90 bg-grid-hero" />
       </div>
       
       <HeroContent />

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Skill, skills } from '@/constants'
 import SkillDataProvider from '../sub/SkillDataProvider'
+import { profile } from '@/data/profile'
 
 const uniqueSkills: Skill[] = Array.from(
   skills
@@ -48,24 +49,24 @@ const Skills = () => {
 
   return (
     <section
-      id="skills"
-      className="relative flex flex-col items-center justify-center gap-12 py-20 px-4 sm:px-8 min-h-[600px] overflow-hidden"
-      aria-labelledby="skills-heading"
+      id="competences"
+      className="relative flex flex-col items-center justify-center gap-8 py-14 px-4 sm:px-8 min-h-[500px] overflow-hidden"
+      aria-labelledby="competences-heading"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 -z-10">
         {/* Floating Geometric Shapes */}
         <div className="absolute top-20 left-10 w-24 h-24 bg-primary/10 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-16 h-16 bg-blue-500/20 rounded-lg rotate-45 animate-bounce"></div>
+        <div className="absolute top-40 right-20 w-16 h-16 bg-accent/20 rounded-lg rotate-45 animate-bounce"></div>
         <div className="absolute bottom-32 left-1/4 w-12 h-12 bg-primary/15 rounded-full animate-ping"></div>
-        <div className="absolute bottom-20 right-1/3 w-20 h-20 bg-blue-400/10 rounded-lg rotate-12 float-animation"></div>
+        <div className="absolute bottom-20 right-1/3 w-20 h-20 bg-secondary/10 rounded-lg rotate-12 float-animation"></div>
         
         {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+        <div className="absolute inset-0 bg-grid-section"></div>
         
         {/* Gradient Orbs */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-80 h-80 bg-gradient-to-r from-primary/20 via-blue-500/10 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-60 h-60 bg-gradient-to-l from-blue-400/15 via-primary/10 to-transparent rounded-full blur-2xl"></div>
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-80 h-80 bg-gradient-to-r from-primary/20 via-accent/10 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-60 h-60 bg-gradient-to-l from-secondary/15 via-primary/10 to-transparent rounded-full blur-2xl"></div>
       </div>
 
       <motion.div 
@@ -76,18 +77,21 @@ const Skills = () => {
         className="text-center max-w-3xl relative z-10"
       >
         <h2
-          id="skills-heading"
-          title="Technical Skills"
-          className="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-foreground via-primary to-blue-500 bg-clip-text text-transparent mb-4"
+          id="competences-heading"
+          title="Compétences"
+          className="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent mb-2"
         >
-          Technical Skills
+          Compétences
         </h2>
         <p className="text-lg text-muted-foreground font-medium">
-          A curated selection of my expertise in DevOps and Cloud Computing
+          Compétences techniques et soft skills au service de vos projets.
         </p>
       </motion.div>
 
+      {/* Compétences techniques */}
       <div className="w-full max-w-6xl relative z-10">
+        <h3 className="text-xl font-semibold text-foreground mb-2 text-center">Compétences techniques</h3>
+        <p className="text-sm text-muted-foreground text-center mb-6">DevOps, cloud, CI/CD, conteneurisation, IaC</p>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +114,7 @@ const Skills = () => {
               whileTap={{ scale: 0.95 }}
             >
               {/* Glow effect */}
-              <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-primary/20 via-blue-500/10 to-transparent blur-sm"></div>
+              <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-primary/20 via-accent/10 to-transparent blur-sm"></div>
               
               <div className="relative flex flex-col items-center gap-3 z-10">
                 <SkillDataProvider
@@ -138,15 +142,15 @@ const Skills = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-12 text-center"
+            className="mt-8 text-center"
           >
             <button
-              title={showAll ? 'Show Less Skills' : `Show All Skills`}
+              title={showAll ? 'Afficher moins de compétences' : 'Afficher toutes les compétences'}
               onClick={() => setShowAll(!showAll)}
-              className="group relative overflow-hidden bg-gradient-to-r from-primary to-blue-500 hover:from-blue-500 hover:to-primary text-primary-foreground px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              className="group relative overflow-hidden bg-gradient-to-r from-secondary via-accent to-primary hover:from-accent hover:to-secondary text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               <div className="relative z-10">
-                {showAll ? 'Show Less' : `Show All (${uniqueSkills.length})`}
+                {showAll ? 'Voir moins' : `Tout afficher (${uniqueSkills.length})`}
               </div>
               <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
             </button>
@@ -158,10 +162,34 @@ const Skills = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-12 text-center text-base text-muted-foreground"
+          className="mt-8 text-center text-base text-muted-foreground"
         >
-          …and plenty more technologies I'm exploring & mastering every day.
+          …et bien d'autres technologies que j'explore et maîtrise au quotidien.
         </motion.p>
+
+        {/* Soft skills */}
+        {profile.softSkills?.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-10 pt-8 border-t border-border"
+          >
+            <h3 className="text-xl font-semibold text-foreground mb-2 text-center">Soft skills</h3>
+            <p className="text-sm text-muted-foreground text-center mb-4">Compétences relationnelles et comportementales</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {profile.softSkills.map((skill, i) => (
+                <span
+                  key={i}
+                  className="px-4 py-2 rounded-full bg-primary/10 text-foreground text-sm font-medium border border-primary/20"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   )

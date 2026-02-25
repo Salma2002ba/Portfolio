@@ -146,12 +146,12 @@ export const NavItems = ({ items, className, isScrolled, onItemClick }: NavItems
             
             document.getElementById(item.link.slice(1))?.scrollIntoView({ behavior: 'smooth' })
           }}
-          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
+          className="relative px-4 py-2 text-muted-foreground hover:text-foreground"
           key={`link-${item.name}`}
           href={item.link}
         >
           {hovered === idx && (
-            <motion.div className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800" />
+            <motion.div className="absolute inset-0 h-full w-full rounded-full bg-primary/10 dark:bg-primary/15" />
           )}
           <div className="relative z-20 flex items-center justify-between gap-2">
             {item.icon} {!isScrolled && <span className="font-semibold">{item.name}</span>}
@@ -253,20 +253,22 @@ export const MobileNavToggle = ({
 export const NavbarLogo = ({ isScrolled }: { isScrolled: boolean }) => {
   return (
     <a
-      title="Navigate to About section"
-      href="#about"
+      title="Retour en haut"
+      href="#hero"
       className="group flex items-center space-x-3"
-      aria-label="Navigate to About section"
+      aria-label="Retour en haut de la page"
     >
-      <Image
-        src="/profile-pic.png"
-        alt={profile.name}
-        width={32}
-        height={32}
-        className="rounded-full"
-      />
+      <span className="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-full [border-radius:9999px]">
+        <Image
+          src="/avatar.png"
+          alt=""
+          width={32}
+          height={32}
+          className="h-full w-full object-cover object-[center_28%]"
+        />
+      </span>
       {!isScrolled && (
-        <span title={profile.name} className="text-lg font-bold group-hover:text-red-500 transition-colors">
+        <span title={profile.name} className="text-lg font-bold text-foreground group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-accent group-hover:bg-clip-text group-hover:text-transparent transition-colors">
           {profile.name}
         </span>
       )}
@@ -297,7 +299,7 @@ export const NavbarButton = ({
     secondary: 'bg-transparent shadow-none dark:text-white',
     dark: 'bg-black text-white shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]',
     gradient:
-      'bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]',
+      'bg-gradient-to-r from-primary via-accent to-secondary text-white shadow-lg hover:shadow-xl hover:opacity-95 transition-all duration-300',
   }
 
   return (

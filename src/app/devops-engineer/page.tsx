@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { profile } from '@/data/profile'
 
 export const metadata: Metadata = {
-  title: `DevOps / Cloud Engineer - ${profile.name}`,
+  title: `Ingénieur DevOps / Cloud - ${profile.name}`,
   description: profile.bio.join(' '),
   keywords: profile.keywords,
   alternates: {
@@ -17,49 +17,49 @@ export default function DevOpsEngineerPage() {
       <div className="container mx-auto px-4 py-16 max-w-4xl">
         <header className="mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            DevOps / Cloud Engineer - {profile.name}
+            Ingénieur DevOps / Cloud — {profile.name}
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed">
-            Experienced DevOps engineer specializing in cloud infrastructure automation, 
-            containerization, and continuous integration/deployment pipelines.
+            Ingénieure DevOps : automatisation d&apos;infrastructure cloud, conteneurisation 
+            et pipelines d&apos;intégration et déploiement continus (CI/CD).
           </p>
         </header>
 
         <main>
           <section className="mb-12">
-            <h2 className="text-3xl font-semibold mb-6 text-foreground">DevOps Expertise</h2>
+            <h2 className="text-3xl font-semibold mb-6 text-foreground">Expertise DevOps</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-primary">Cloud Platforms</h3>
+                <h3 className="text-xl font-semibold mb-4 text-primary">Plateformes cloud</h3>
                 <ul className="space-y-2 text-muted-foreground">
                   <li>• AWS (EC2, ECS, EKS, Lambda, S3, RDS)</li>
-                  <li>• Azure DevOps and Cloud Services</li>
+                  <li>• Azure DevOps et services cloud</li>
                   <li>• Google Cloud Platform (GCP)</li>
-                  <li>• Multi-cloud architecture design</li>
+                  <li>• Conception d&apos;architectures multi-cloud</li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-primary">Containerization & Orchestration</h3>
+                <h3 className="text-xl font-semibold mb-4 text-primary">Conteneurisation & orchestration</h3>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• Docker containerization</li>
-                  <li>• Kubernetes cluster management</li>
-                  <li>• Helm charts and package management</li>
-                  <li>• Container security best practices</li>
+                  <li>• Conteneurisation Docker</li>
+                  <li>• Gestion de clusters Kubernetes</li>
+                  <li>• Helm charts et gestion des déploiements</li>
+                  <li>• Bonnes pratiques de sécurité des conteneurs</li>
                 </ul>
               </div>
             </div>
           </section>
 
           <section className="mb-12">
-            <h2 className="text-3xl font-semibold mb-6 text-foreground">CI/CD & Automation</h2>
+            <h2 className="text-3xl font-semibold mb-6 text-foreground">CI/CD & automatisation</h2>
             <div className="bg-card p-6 rounded-lg border">
               <p className="text-muted-foreground mb-4">
-                I design and implement robust CI/CD pipelines that automate the entire software 
-                delivery lifecycle, from code commit to production deployment.
+                Conception et mise en place de pipelines CI/CD robustes : du commit à la mise en production, 
+                en passant par les tests et le déploiement automatisé.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
                 <div>
-                  <h4 className="font-semibold mb-2 text-foreground">Pipeline Tools</h4>
+                  <h4 className="font-semibold mb-2 text-foreground">Outils de pipeline</h4>
                   <ul className="text-sm text-muted-foreground space-y-1">
                     <li>• Jenkins</li>
                     <li>• GitHub Actions</li>
@@ -68,7 +68,7 @@ export default function DevOpsEngineerPage() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2 text-foreground">Infrastructure as Code</h4>
+                  <h4 className="font-semibold mb-2 text-foreground">Infrastructure as Code (IaC)</h4>
                   <ul className="text-sm text-muted-foreground space-y-1">
                     <li>• Terraform</li>
                     <li>• Ansible</li>
@@ -77,10 +77,10 @@ export default function DevOpsEngineerPage() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2 text-foreground">Monitoring & Logging</h4>
+                  <h4 className="font-semibold mb-2 text-foreground">Monitoring & observabilité</h4>
                   <ul className="text-sm text-muted-foreground space-y-1">
                     <li>• Prometheus & Grafana</li>
-                    <li>• ELK Stack</li>
+                    <li>• Stack ELK</li>
                     <li>• CloudWatch</li>
                     <li>• Datadog</li>
                   </ul>
@@ -90,34 +90,33 @@ export default function DevOpsEngineerPage() {
           </section>
 
           <section className="mb-12">
-            <h2 className="text-3xl font-semibold mb-6 text-foreground">Why Choose Me as Your DevOps Engineer?</h2>
+            <h2 className="text-3xl font-semibold mb-6 text-foreground">Pourquoi me choisir comme ingénieure DevOps ?</h2>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                As a dedicated DevOps engineer, I bring a comprehensive understanding of both 
-                development and operations, enabling seamless collaboration between teams and 
-                faster, more reliable software delivery.
+                En tant qu&apos;ingénieure DevOps, je m&apos;appuie sur une vision à la fois développement et opérations : 
+                collaboration fluide entre les équipes, livraison logicielle plus rapide et fiable.
               </p>
               <ul className="space-y-2 ml-4">
-                <li>• <strong>Scalable Infrastructure:</strong> Design cloud-native solutions that grow with your business</li>
-                <li>• <strong>Cost Optimization:</strong> Implement efficient resource management to reduce cloud costs</li>
-                <li>• <strong>Security First:</strong> Integrate security practices throughout the DevOps pipeline</li>
-                <li>• <strong>Automation Focus:</strong> Eliminate manual processes and reduce human error</li>
-                <li>• <strong>Continuous Improvement:</strong> Implement monitoring and feedback loops for ongoing optimization</li>
+                <li>• <strong>Infrastructure scalable :</strong> solutions cloud-native qui évoluent avec votre activité</li>
+                <li>• <strong>Optimisation des coûts :</strong> gestion des ressources pour maîtriser la facture cloud</li>
+                <li>• <strong>Sécurité (DevSecOps) :</strong> sécurité intégrée tout au long du pipeline</li>
+                <li>• <strong>Automatisation :</strong> réduction des tâches manuelles et des erreurs</li>
+                <li>• <strong>Amélioration continue :</strong> monitoring et boucles de feedback pour optimiser en continu</li>
               </ul>
             </div>
           </section>
 
           <section className="text-center">
-            <h2 className="text-3xl font-semibold mb-6 text-foreground">Ready to Transform Your Infrastructure?</h2>
+            <h2 className="text-3xl font-semibold mb-6 text-foreground">Prêt à transformer votre infrastructure ?</h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Let's discuss how I can help streamline your development workflow, improve deployment 
-              reliability, and scale your infrastructure efficiently.
+              Échangeons sur vos besoins : rationaliser vos workflows, renforcer la fiabilité des déploiements 
+              et scaler votre infrastructure.
             </p>
             <Link 
               href="/#contact"
-              className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary via-accent to-secondary text-white rounded-lg shadow-md hover:shadow-lg hover:opacity-95 transition-all duration-300"
             >
-              Get In Touch
+              Me contacter
             </Link>
           </section>
         </main>
