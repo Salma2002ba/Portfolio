@@ -54,12 +54,16 @@ export default function About() {
       className="relative flex flex-col items-center justify-center gap-8 py-14 px-4 sm:px-8 overflow-hidden"
       aria-labelledby="about-heading"
     >
-      <div className="absolute inset-0 -z-10 pointer-events-none">
+      <div className="cyberpunk-diagonals absolute inset-0 -z-10 pointer-events-none">
         <div className="absolute top-20 right-10 w-40 h-40 bg-primary/[0.06] rounded-full blur-[80px] animate-pulse" />
         <div className="absolute bottom-32 left-1/4 w-32 h-32 bg-accent/[0.05] rounded-full blur-[70px] float-animation" />
         <div className="absolute top-1/2 right-16 w-28 h-28 bg-secondary/[0.04] rounded-3xl blur-[60px] -rotate-12 animate-pulse" />
         <div className="absolute top-24 left-1/3 w-36 h-36 bg-accent/[0.04] rounded-full blur-[90px] float-animation" />
         <div className="absolute bottom-20 right-20 w-24 h-24 bg-primary/[0.05] rounded-lg blur-[50px] rotate-45 animate-bounce" />
+        {/* Cyberpunk : motifs animés en dark */}
+        <div className="absolute top-16 left-1/4 w-24 h-24 bg-primary/20 rounded-full blur-[55px] opacity-0 dark:opacity-100 cyberpunk-float-slow" aria-hidden />
+        <div className="absolute bottom-40 right-1/3 w-32 h-32 bg-accent/15 rounded-full blur-[70px] opacity-0 dark:opacity-100 cyberpunk-pulse-glow" aria-hidden />
+        <div className="absolute top-1/3 left-10 w-16 h-16 bg-secondary/20 rounded-lg blur-[45px] opacity-0 dark:opacity-100 cyberpunk-drift" aria-hidden />
         <div className="absolute inset-0 bg-grid-section" />
       </div>
 

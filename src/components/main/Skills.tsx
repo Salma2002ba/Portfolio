@@ -53,19 +53,21 @@ const Skills = () => {
       aria-labelledby="competences-heading"
     >
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 -z-10">
+      <div className="cyberpunk-diagonals absolute inset-0 -z-10 pointer-events-none">
         {/* Floating Geometric Shapes */}
-        <div className="absolute top-20 left-10 w-24 h-24 bg-primary/10 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-16 h-16 bg-accent/20 rounded-lg rotate-45 animate-bounce"></div>
-        <div className="absolute bottom-32 left-1/4 w-12 h-12 bg-primary/15 rounded-full animate-ping"></div>
-        <div className="absolute bottom-20 right-1/3 w-20 h-20 bg-secondary/10 rounded-lg rotate-12 float-animation"></div>
-        
+        <div className="absolute top-20 left-10 w-24 h-24 bg-primary/10 rounded-full blur-xl animate-pulse" />
+        <div className="absolute top-40 right-20 w-16 h-16 bg-accent/20 rounded-lg rotate-45 animate-bounce" />
+        <div className="absolute bottom-32 left-1/4 w-12 h-12 bg-primary/15 rounded-full animate-ping" />
+        <div className="absolute bottom-20 right-1/3 w-20 h-20 bg-secondary/10 rounded-lg rotate-12 float-animation" />
+        {/* Cyberpunk : formes animées en dark */}
+        <div className="absolute top-1/4 right-16 w-28 h-28 bg-primary/20 rounded-full blur-[65px] opacity-0 dark:opacity-100 cyberpunk-float-slow" aria-hidden />
+        <div className="absolute bottom-1/3 left-20 w-32 h-32 bg-accent/15 rounded-full blur-[75px] opacity-0 dark:opacity-100 cyberpunk-pulse-glow" aria-hidden />
+        <div className="absolute top-1/2 right-1/4 w-14 h-14 bg-secondary/25 rounded-lg blur-[45px] opacity-0 dark:opacity-100 cyberpunk-drift" aria-hidden />
         {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-grid-section"></div>
-        
+        <div className="absolute inset-0 bg-grid-section" />
         {/* Gradient Orbs */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-80 h-80 bg-gradient-to-r from-primary/20 via-accent/10 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-60 h-60 bg-gradient-to-l from-secondary/15 via-primary/10 to-transparent rounded-full blur-2xl"></div>
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-80 h-80 bg-gradient-to-r from-primary/20 via-accent/10 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-60 h-60 bg-gradient-to-l from-secondary/15 via-primary/10 to-transparent rounded-full blur-2xl" />
       </div>
 
       <motion.div 

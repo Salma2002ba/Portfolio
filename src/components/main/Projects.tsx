@@ -112,12 +112,6 @@ const Projects = () => {
           <h1 title="Mes projets" className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent mb-2">
             Mes projets
           </h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-2">
-            Projets concrets : pipelines CI/CD, infrastructure as Code, conteneurisation et cloud.
-          </p>
-          <p className="text-sm text-muted-foreground font-medium">
-            {totalProjects} projet{totalProjects > 1 ? 's' : ''} au total
-          </p>
         </motion.div>
 
         {/* Tag Filter Section */}

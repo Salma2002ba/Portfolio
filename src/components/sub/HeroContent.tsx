@@ -110,7 +110,7 @@ const HeroContent: FC = () => {
           </div>
           <h1
             title={profile.name}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight text-center bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
+            className="hero-name-glow text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight text-center bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
           >
             {profile.name}
           </h1>

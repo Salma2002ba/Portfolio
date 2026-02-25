@@ -95,13 +95,17 @@ const ContactUs: FC = () => {
   return (
     <section id="contact" className="relative py-14 bg-background text-foreground transition-colors overflow-hidden">
       {/* Motifs et blobs animés — palette bleu/rose/vert */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
+      <div className="cyberpunk-diagonals absolute inset-0 -z-10 pointer-events-none">
         <div className="absolute top-20 left-12 w-40 h-40 bg-primary/[0.06] rounded-full blur-[80px] animate-pulse" />
         <div className="absolute top-60 right-16 w-28 h-28 bg-accent/[0.06] rounded-lg rotate-45 blur-[60px] animate-bounce" />
         <div className="absolute bottom-40 left-1/3 w-44 h-44 bg-primary/[0.05] rounded-full blur-[90px] float-animation" />
         <div className="absolute bottom-20 right-1/4 w-24 h-24 bg-secondary/[0.06] rounded-lg rotate-12 blur-[50px] float-animation" />
         <div className="absolute top-1/3 right-1/4 w-56 h-56 bg-accent/[0.04] rounded-full blur-[100px] animate-pulse" />
         <div className="absolute bottom-1/3 left-16 w-36 h-36 bg-secondary/[0.05] rounded-full blur-[70px] float-animation" />
+        {/* Cyberpunk : blobs animés en dark */}
+        <div className="absolute top-24 right-1/3 w-32 h-32 bg-primary/20 rounded-full blur-[70px] opacity-0 dark:opacity-100 cyberpunk-glow-breath" aria-hidden />
+        <div className="absolute bottom-32 left-1/4 w-24 h-24 bg-accent/15 rounded-full blur-[60px] opacity-0 dark:opacity-100 cyberpunk-float-slow" aria-hidden />
+        <div className="absolute top-1/2 right-12 w-20 h-20 bg-secondary/25 rounded-lg blur-[50px] opacity-0 dark:opacity-100 cyberpunk-rotate-slow" aria-hidden />
         <div className="absolute inset-0 bg-grid-section" />
       </div>
 
