@@ -7,6 +7,9 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { profile } from '@/data/profile'
+import { getSiteUrl } from '@/lib/site'
+
+const siteBaseUrl = getSiteUrl()
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -39,13 +42,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: profile.siteUrl,
+    url: siteBaseUrl,
     title: `${profile.name} - ${profile.title}`,
     description: profile.bio.join(' '),
     siteName: `${profile.name} Portfolio`,
     images: [
       {
-        url: `${profile.siteUrl}/profile-pic.png`,
+        url: `${siteBaseUrl}/profile-pic.png`,
         width: 1200,
         height: 630,
         alt: `${profile.name} - ${profile.title}`,
@@ -53,7 +56,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: profile.siteUrl,
+    canonical: siteBaseUrl,
   },
 }
 
@@ -68,8 +71,8 @@ export default function RootLayout({
     name: profile.name,
     jobTitle: profile.title,
     description: profile.bio.join(' '),
-    url: profile.siteUrl,
-    image: `${profile.siteUrl}/profile-pic.png`,
+    url: siteBaseUrl,
+    image: `${siteBaseUrl}/profile-pic.png`,
     sameAs: [profile.links.github, profile.links.linkedin].filter(Boolean),
     knowsAbout: profile.skills.map((s) => s.skill_name),
     address: {
@@ -85,7 +88,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <link rel="canonical" href={profile.siteUrl} />
+        <link rel="canonical" href={siteBaseUrl} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#030712" media="(prefers-color-scheme: dark)" />

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FaGraduationCap } from 'react-icons/fa'
 import { profile } from '@/data/profile'
+import { publicUrl } from '@/lib/utils'
 import { useState } from 'react'
 import { Timeline as TimelineComponent } from '@/components/ui/timeline'
 
@@ -18,7 +19,7 @@ function EducationElement({ item }: { item: (typeof profile.education)[number] }
           {showLogo ? (
             <Image
               key={item.logoUrl}
-              src={item.logoUrl}
+              src={publicUrl(item.logoUrl!)}
               alt=""
               width={112}
               height={112}

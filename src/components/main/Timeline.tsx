@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Timeline as TimelineComponent } from '@/components/ui/timeline'
 import { FaCloud, FaDatabase, FaFlask, FaShieldAlt } from 'react-icons/fa'
 import { profile } from '@/data/profile'
+import { publicUrl } from '@/lib/utils'
 
 export interface TimelineItem {
   id: number
@@ -56,7 +57,7 @@ export const TimelineElement: FC<{ item: TimelineItem; index: number }> = ({ ite
           <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 rounded-lg bg-muted/80 border border-border flex items-center justify-center overflow-hidden p-2">
             <Image
               key={logoSrc}
-              src={logoSrc}
+              src={publicUrl(logoSrc)}
               alt=""
               width={112}
               height={112}
@@ -106,7 +107,7 @@ export const TimelineElement: FC<{ item: TimelineItem; index: number }> = ({ ite
         <div className="w-full mt-4">
           <div className="relative w-full h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-md bg-background">
             <Image
-              src={item.imageURL}
+              src={publicUrl(item.imageURL)}
               alt={`${item.title} Architecture`}
               className="object-contain"
               loading="lazy"

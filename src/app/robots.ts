@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { profile } from '@/data/profile'
+import { getSiteUrl } from '@/lib/site'
 
 export const dynamic = 'force-static'
 
@@ -10,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/_next/', '/admin/'],
     },
-    sitemap: `${profile.siteUrl}/sitemap.xml`,
+    sitemap: `${getSiteUrl()}/sitemap.xml`,
   }
 }

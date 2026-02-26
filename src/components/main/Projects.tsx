@@ -15,6 +15,7 @@ import { BentoGrid, BentoGridItem } from '../ui/bento-grid'
 import { Tags } from 'lucide-react'
 import { useState, useMemo } from 'react'
 import { profile } from '@/data/profile'
+import { publicUrl } from '@/lib/utils'
 
 const projectsData = profile.projects
 
@@ -224,7 +225,7 @@ const Projects = () => {
                 header={
                   <div className="relative w-full h-full [@media(max-width:425px)]:min-h-[9rem] min-h-[6rem] rounded-xl overflow-hidden">
                     <Image
-                      src={project.imageURL}
+                      src={publicUrl(project.imageURL)}
                       alt={project.title}
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"

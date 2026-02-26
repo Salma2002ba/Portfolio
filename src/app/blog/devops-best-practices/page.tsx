@@ -1,13 +1,14 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { profile } from '@/data/profile'
+import { getSiteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: `Bonnes pratiques DevOps - ${profile.name}`,
   description: profile.bio.join(' '),
   keywords: profile.keywords,
   alternates: {
-    canonical: `${profile.siteUrl}/blog/devops-best-practices`,
+    canonical: `${getSiteUrl()}/blog/devops-best-practices`,
   },
   openGraph: {
     title: `Bonnes pratiques DevOps - ${profile.name}`,

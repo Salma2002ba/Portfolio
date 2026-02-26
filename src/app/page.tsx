@@ -14,12 +14,13 @@ import CertificationsSection from '@/components/main/Certifications'
 import { AnalyticsDebug } from '@/components/analytics/AnalyticsDebug'
 import InteractiveWrapper from '@/components/main/InteractiveWrapper'
 import { profile } from '@/data/profile'
+import { getSiteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: `${profile.name} - ${profile.title} Portfolio`,
   description: profile.bio.join(' '),
   alternates: {
-    canonical: profile.siteUrl,
+    canonical: getSiteUrl(),
   },
 }
 

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
+import { publicUrl } from '@/lib/utils'
 import { ExternalLink, Award } from 'lucide-react'
 import { useState, useMemo } from 'react'
 
@@ -100,7 +101,7 @@ const CertificationTile = ({ certification }: CertificationTileProps) => {
       <div
         className="relative h-48 min-[650px]:h-40 md:h-38 bg-gray-50 group/image"
         style={{
-          backgroundImage: certification.Image ? `url(${certification.Image})` : 'none',
+          backgroundImage: certification.Image ? `url(${publicUrl(certification.Image)})` : 'none',
           backgroundSize: 'contain',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'

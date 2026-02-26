@@ -7,6 +7,7 @@ import { NavbarButton } from '../ui/resizable-navbar'
 import { TrackableContact } from '@/components/analytics/TrackableElement'
 import { useAnalyticsContext } from '@/components/analytics/AnalyticsProvider'
 import { profile } from '@/data/profile'
+import { publicUrl } from '@/lib/utils'
 
 const HeroContent: FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -98,7 +99,7 @@ const HeroContent: FC = () => {
           <div className="relative flex-shrink-0 w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full p-[4px] bg-gradient-to-r from-primary via-accent to-primary shadow-lg ring-2 ring-primary/30 ring-offset-2 ring-offset-background [border-radius:9999px]">
             <div className="relative w-full h-full rounded-full overflow-hidden bg-muted aspect-square [border-radius:9999px]">
               <Image
-                src="/avatar.png"
+                src={publicUrl('/avatar.png')}
                 alt=""
                 width={192}
                 height={192}

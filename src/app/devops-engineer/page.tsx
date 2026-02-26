@@ -1,13 +1,14 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { profile } from '@/data/profile'
+import { getSiteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: `Ingénieur DevOps / Cloud - ${profile.name}`,
   description: profile.bio.join(' '),
   keywords: profile.keywords,
   alternates: {
-    canonical: `${profile.siteUrl}/devops-engineer`,
+    canonical: `${getSiteUrl()}/devops-engineer`,
   },
 }
 

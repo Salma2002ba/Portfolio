@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Skill, skills } from '@/constants'
 import SkillDataProvider from '../sub/SkillDataProvider'
+import { publicUrl } from '@/lib/utils'
 
 const uniqueSkills: Skill[] = Array.from(
   skills
@@ -115,7 +116,7 @@ const Skills = () => {
               
               <div className="relative flex flex-col items-center gap-3 z-10">
                 <SkillDataProvider
-                  src={skill.Image}
+                  src={publicUrl(skill.Image)}
                   width={32}
                   height={32}
                   index={index}

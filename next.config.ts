@@ -11,6 +11,11 @@ const isGitHubPages = process.env.GITHUB_PAGES === 'true'
 const basePath = process.env.BASE_PATH ?? ''
 
 const nextConfig: NextConfig = {
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath || '',
+    /** Full site URL for GitHub Pages (e.g. https://user.github.io/Portfolio). Set in workflow. */
+    NEXT_PUBLIC_SITE_URL: process.env.SITE_URL || '',
+  },
   ...(isGitHubPages && {
     output: 'export',
     basePath: basePath || undefined,

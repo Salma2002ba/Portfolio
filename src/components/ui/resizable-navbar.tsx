@@ -1,5 +1,5 @@
 'use client'
-import { cn } from '@/lib/utils'
+import { cn, publicUrl } from '@/lib/utils'
 import { IconMenu2, IconX } from '@tabler/icons-react'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react'
 import Image from 'next/image'
@@ -260,7 +260,7 @@ export const NavbarLogo = ({ isScrolled }: { isScrolled: boolean }) => {
     >
       <span className="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-full [border-radius:9999px]">
         <Image
-          src="/avatar.png"
+          src={publicUrl('/avatar.png')}
           alt=""
           width={32}
           height={32}

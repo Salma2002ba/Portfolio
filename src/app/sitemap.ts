@@ -1,10 +1,10 @@
 import { MetadataRoute } from 'next'
-import { profile } from '@/data/profile'
+import { getSiteUrl } from '@/lib/site'
 
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = profile.siteUrl
+  const baseUrl = getSiteUrl()
 
   return [
     {

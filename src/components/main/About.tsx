@@ -11,6 +11,7 @@ import {
   FaSearch,
 } from 'react-icons/fa'
 import { profile } from '@/data/profile'
+import { publicUrl } from '@/lib/utils'
 
 const aboutPoints = [
   {
@@ -99,7 +100,7 @@ export default function About() {
 
         <div className="mt-8">
           <Link
-            href={profile.resume.filePath}
+            href={publicUrl(profile.resume.filePath)}
             download
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-secondary text-white rounded-xl font-medium shadow-md hover:shadow-lg hover:opacity-95 transition-all duration-300"
           >

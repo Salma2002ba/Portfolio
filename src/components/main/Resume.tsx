@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { profile } from '@/data/profile'
+import { publicUrl } from '@/lib/utils'
 
 const Document = dynamic(() => import('react-pdf').then((mod) => mod.Document), { ssr: false })
 const Page = dynamic(() => import('react-pdf').then((mod) => mod.Page), { ssr: false })
@@ -57,7 +58,7 @@ const ResumeSection = () => {
             <p className="text-destructive text-center text-lg p-4">Échec du chargement du PDF : {error}</p>
           ) : (
             <Document
-              file={profile.resume.filePath}
+              file={publicUrl(profile.resume.filePath)}
               onLoadError={onDocumentLoadError}
               className="flex justify-center w-full"
             >
