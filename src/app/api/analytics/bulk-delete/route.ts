@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
+import { supabaseAdmin } from '@/lib/supabase'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
-const supabase = createClient(supabaseUrl, supabaseKey)
+export const dynamic = 'force-static'
 
 const ADMIN_TOKEN = process.env.ANALYTICS_ADMIN_TOKEN || 'portfolio-analytics-2025-secure-token'
 
@@ -15,6 +13,10 @@ export async function DELETE(request: NextRequest) {
     
     if (!token || token !== ADMIN_TOKEN) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    if (!supabaseAdmin) {
+      return NextResponse.json({ error: 'Analytics not configured' }, { status: 503 })
     }
 
     // Get the bulk delete parameters from the request body
@@ -32,7 +34,7 @@ export async function DELETE(request: NextRequest) {
     const endDateTime = new Date(endDate + 'T23:59:59.999Z').toISOString()
 
     // Delete events matching the criteria from Supabase
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
       .from('analytics_events')
       .delete()
       .eq('event_type', eventType)

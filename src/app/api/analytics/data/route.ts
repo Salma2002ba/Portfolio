@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 
+export const dynamic = 'force-static';
+
 // Simple authentication - in production, use proper auth
 const ADMIN_TOKEN = process.env.ANALYTICS_ADMIN_TOKEN || 'your-secret-admin-token';
 
@@ -14,6 +16,13 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
+      );
+    }
+
+    if (!supabaseAdmin) {
+      return NextResponse.json(
+        { error: 'Analytics not configured' },
+        { status: 503 }
       );
     }
 

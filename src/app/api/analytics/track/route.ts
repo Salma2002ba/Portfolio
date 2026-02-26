@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
+export const dynamic = 'force-static';
+
 interface AnalyticsEvent {
   event_type: string;
   element_id?: string;
@@ -26,6 +28,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
+      );
+    }
+
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Analytics not configured' },
+        { status: 503 }
       );
     }
 

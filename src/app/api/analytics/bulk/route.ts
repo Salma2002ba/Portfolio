@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 
+export const dynamic = 'force-static'
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,6 +10,10 @@ export async function POST(request: NextRequest) {
 
     if (!events || !Array.isArray(events) || events.length === 0) {
       return NextResponse.json({ error: 'Events array is required' }, { status: 400 })
+    }
+
+    if (!supabaseAdmin) {
+      return NextResponse.json({ error: 'Analytics not configured' }, { status: 503 })
     }
 
     // Get client IP

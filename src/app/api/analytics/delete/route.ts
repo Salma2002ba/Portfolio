@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
+import { supabaseAdmin } from '@/lib/supabase'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
-const supabase = createClient(supabaseUrl, supabaseKey)
+export const dynamic = 'force-static'
 
 const ADMIN_TOKEN = process.env.ANALYTICS_ADMIN_TOKEN || 'portfolio-analytics-2025-secure-token'
 
@@ -17,6 +15,10 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
+    if (!supabaseAdmin) {
+      return NextResponse.json({ error: 'Analytics not configured' }, { status: 503 })
+    }
+
     // Get the event ID from the request body
     const body = await request.json()
     const { id } = body
@@ -26,7 +28,7 @@ export async function DELETE(request: NextRequest) {
     }
 
     // Delete the specific event from Supabase
-    const { error } = await supabase
+    const { error } = await supabaseAdmin
       .from('analytics_events')
       .delete()
       .eq('id', id)

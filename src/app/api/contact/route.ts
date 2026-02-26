@@ -2,7 +2,10 @@ export const runtime = 'edge'
 
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+function getResend(): Resend | null {
+  const key = process.env.RESEND_API_KEY
+  return key ? new Resend(key) : null
+}
 
 interface FormData {
   name: string
@@ -51,6 +54,14 @@ export async function POST(req: Request) {
   const sanitizedName = name.replace(/[<>]/g, '')
   const sanitizedSubject = subject.replace(/[<>]/g, '')
   const sanitizedMessage = message.replace(/[<>]/g, '')
+
+  const resend = getResend()
+  if (!resend) {
+    return new Response(
+      JSON.stringify({ error: 'Contact form is not configured' }),
+      { status: 503 },
+    )
+  }
 
   try {
     const { error } = await resend.emails.send({
