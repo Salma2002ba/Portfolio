@@ -46,7 +46,11 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# Healthcheck pour orchestration (K8s/ECS) et Trivy config scan
+RUN apk add --no-cache curl
 USER nextjs
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost:3000/ || exit 1
 
 EXPOSE 3000
 

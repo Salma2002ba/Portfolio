@@ -1,6 +1,6 @@
 # Docs DevOps / Cloud — Portfolio
 
-**Status global :** ✅ Code & Docker & CI (Jest + 4 jobs) → Security → Registry → IaC → Deploy → Monitor
+**Status global :** ✅ Code & Docker & CI & Security → Registry → IaC → Deploy → Monitor
 
 Documentation progressive « au fil de l'avancement ». Chaque chapitre reflète l'état réel du repo.
 
@@ -25,10 +25,10 @@ Documentation progressive « au fil de l'avancement ». Chaque chapitre reflète
 
 ```
 Code → Docker → CI → Security → Registry → IaC (Terraform) → Deploy AWS (ECS) → Monitoring
-  ✅      ✅      ✅       ⏳         ⏳           ⏳               ⏳              ⏳
+  ✅      ✅      ✅       ✅         ⏳           ⏳               ⏳              ⏳
 ```
 
-**Prochaine étape :** Security (Trivy/Syft) puis Registry (GHCR). Voir [03-ci.md](03-ci.md).
+**Prochaine étape :** Registry (GHCR puis ECR). Voir [04-security.md](04-security.md) et [05-registry.md](05-registry.md).
 
 ---
 
