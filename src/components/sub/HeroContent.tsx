@@ -11,11 +11,11 @@ import { publicUrl } from '@/lib/utils'
 
 const HeroContent: FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const { trackClick } = useAnalyticsContext()
+  useAnalyticsContext()
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+    const handleMouseMove = (ev: MouseEvent) => {
+      setMousePosition({ x: ev.clientX, y: ev.clientY })
     }
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
@@ -42,7 +42,7 @@ const HeroContent: FC = () => {
     requestAnimationFrame(scroll)
   }
 
-  const handleConnectClick = (e: React.MouseEvent<HTMLElement>) => {
+  const handleConnectClick = () => {
     // Track the click
     // trackClick(e, 'hero-connect-button', 'Let\'s Connect')
 

@@ -22,7 +22,16 @@ export async function POST(request: NextRequest) {
       'unknown';
 
     // Validate and prepare events for Supabase (matching existing table structure)
-    const preparedEvents = events.map((event: any) => {
+    interface IncomingEvent {
+      event_type: string
+      session_id: string
+      timestamp: string
+      element_id?: string | null
+      element_text?: string | null
+      page_path?: string | null
+      [key: string]: unknown
+    }
+    const preparedEvents = events.map((event: IncomingEvent) => {
       // Validate required fields
       if (!event.event_type || !event.session_id || !event.timestamp) {
         throw new Error('Each event must have event_type, session_id, and timestamp')

@@ -113,7 +113,6 @@ function Chip({
 
 function NoteCard({
   note,
-  index,
   isExpanded,
   onToggle,
 }: {
@@ -204,7 +203,6 @@ function NoteCard({
 
 function ResourceCard({
   res,
-  index,
   isExpanded,
   onToggle,
 }: {
@@ -291,8 +289,8 @@ function ResourceCard({
 }
 
 export function BlogsSection() {
-  const notes = profile.engineeringNotes ?? []
-  const resources = profile.resources ?? []
+  const notes = useMemo(() => profile.engineeringNotes ?? [], [])
+  const resources = useMemo(() => profile.resources ?? [], [])
 
   const [activeTab, setActiveTab] = useState<TabId>(TAB_NOTES)
   const [searchQuery, setSearchQuery] = useState('')

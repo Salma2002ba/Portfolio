@@ -1,28 +1,27 @@
 'use client'
 
-import { ReactNode, useEffect, useRef } from 'react'
+import { type ReactNode, useRef, type MouseEvent as ReactMouseEvent } from 'react'
 
 type Props = {
   children: ReactNode
 }
 
 export default function InteractiveWrapper({ children }: Props) {
-  const findTitle = (target: any): string | null => {
+  const findTitle = (target: Element | null): string | null => {
     if (!target)
       return null
     const MAX_ATTEMPTS = 70
     let attempt = 0
 
-    if (target.title)
+    if (target instanceof HTMLElement && target.title)
       return target.title
 
-    const searchDeep = (target: any): string | null => {
-      for (const child of target.childNodes) {
-        if (child.title)
-          return child.title
+    const searchDeep = (node: Node): string | null => {
+      const el = node as HTMLElement
+      if (el.title) return el.title
+      for (const child of node.childNodes) {
         const deepTitle = searchDeep(child)
-        if (deepTitle)
-          return deepTitle
+        if (deepTitle) return deepTitle
       }
       return null
     }
@@ -31,18 +30,20 @@ export default function InteractiveWrapper({ children }: Props) {
     if (deepTitle)
       return deepTitle
 
-    let parent = target.parentElement
+    let parent = target instanceof HTMLElement ? target.parentElement : null
     while (parent) {
       if (parent.title)
         return parent.title
       parent = parent.parentElement
 
-      const deepTitle = searchDeep(parent)
-      if (deepTitle)
-        return deepTitle
+      if (parent) {
+        const deepTitle = searchDeep(parent)
+        if (deepTitle)
+          return deepTitle
+      }
     }
 
-    const prevTitle: string | null = findTitle(target.previousElementSibling)
+    const prevTitle: string | null = findTitle((target as Element).previousElementSibling)
     if (prevTitle)
       return prevTitle
 
@@ -52,7 +53,7 @@ export default function InteractiveWrapper({ children }: Props) {
     return null
   }
 
-  const updateClickAnalyticsData = async (event: any) => {
+  const updateClickAnalyticsData = async (event: ReactMouseEvent<HTMLDivElement>) => {
     if (process.env.NODE_ENV === 'development') return
     const title = findTitle(event.target)
 
@@ -110,7 +111,7 @@ export default function InteractiveWrapper({ children }: Props) {
   const titlesRef = useRef(new Set<string>());
   const oldTitlesRef = useRef(new Set<string>());
 
-  const handleMouseMove = (event: any) => {
+  const handleMouseMove = (event: ReactMouseEvent<HTMLDivElement>) => {
     const title = findTitle(event.target);
     if (title) {
       titlesRef.current.add(title);

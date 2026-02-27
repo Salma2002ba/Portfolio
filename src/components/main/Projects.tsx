@@ -1,12 +1,5 @@
 'use client'
 
-import {
-  IconArrowWaveRightUp,
-  IconClipboardCopy,
-  IconFileBroken,
-  IconSignature,
-  IconTableColumn,
-} from '@tabler/icons-react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FaGithub } from 'react-icons/fa'
@@ -81,8 +74,6 @@ const Projects = () => {
     }
     return false
   }
-
-  const totalProjects = projectsData.length // only added: data to show
 
   return (
     <section id="projects" className="relative py-14 overflow-hidden">
@@ -257,7 +248,7 @@ const Projects = () => {
         {filteredProjects.length === 0 && (
           <div className="col-span-full text-center py-8">
             <p className="text-muted-foreground text-lg">
-              Aucun projet ne correspond aux tags sélectionnés. Essayez d'autres tags.
+              Aucun projet ne correspond aux tags sélectionnés. Essayez d&apos;autres tags.
             </p>
           </div>
         )}

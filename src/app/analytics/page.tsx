@@ -3,15 +3,22 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
+interface AnalyticsEvent {
+  event_type?: string;
+  session_id?: string;
+  timestamp?: string;
+  [key: string]: unknown;
+}
+
 interface AnalyticsData {
-  events: any[];
+  events: AnalyticsEvent[];
   summary: {
     totalEvents: number;
     uniqueSessions: number;
     eventTypes: Record<string, number>;
     topPages: Record<string, number>;
     topElements: Record<string, number>;
-    recentActivity: any[];
+    recentActivity: AnalyticsEvent[];
     dailyStats: Record<string, number>;
   };
   totalEvents: number;
@@ -333,7 +340,7 @@ export default function AnalyticsPage() {
         throw new Error('Failed to download resume');
       }
 
-      const result = await response.json();
+      await response.json();
       alert('Resume downloaded successfully to /public/resume.pdf');
     } catch (err) {      
       setError(err instanceof Error ? err.message : 'Failed to download resume');

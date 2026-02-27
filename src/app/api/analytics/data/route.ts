@@ -73,7 +73,13 @@ export async function GET(request: NextRequest) {
   }
 }
 
-function generateSummary(events: any[]) {
+interface AnalyticsEventRow {
+  event_type?: string
+  session_id?: string
+  timestamp?: string
+  [key: string]: unknown
+}
+function generateSummary(events: AnalyticsEventRow[]) {
   const summary = {
     totalEvents: events.length,
     uniqueSessions: new Set(events.map(e => e.session_id)).size,

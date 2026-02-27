@@ -1,16 +1,14 @@
 'use client'
-import { Badge } from '@/components/ui/badge'
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaRocket } from 'react-icons/fa'
 import { FC, useState, useEffect } from 'react'
-import { HiSparkles } from 'react-icons/hi'
 import { NavbarButton } from '../ui/resizable-navbar'
-import { TrackableElement, TrackableContact } from '@/components/analytics/TrackableElement'
+import { TrackableContact } from '@/components/analytics/TrackableElement'
 import { useAnalyticsContext } from '@/components/analytics/AnalyticsProvider'
 
 const HeroContentWithAnalytics: FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const { trackClick } = useAnalyticsContext()
+  useAnalyticsContext()
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -136,7 +134,7 @@ const HeroContentWithAnalytics: FC = () => {
         >
           <div className="flex items-center gap-3">
             <FaRocket className="w-5 h-5 group-hover:animate-bounce" />
-            Let's Connect
+            Let&apos;s Connect
             <div className="w-2 h-2 bg-white/80 rounded-full animate-pulse"></div>
           </div>
           <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>

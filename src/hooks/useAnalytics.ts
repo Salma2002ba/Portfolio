@@ -1,11 +1,9 @@
 'use client';
 
-import { useEffect, useCallback } from 'react';
+import { useCallback } from 'react';
 import { analytics } from '@/lib/analytics';
-import { usePathname } from 'next/navigation';
 
 export function useAnalytics() {
-  const pathname = usePathname();
 
   // Page view tracking disabled - using Vercel Analytics instead
   // useEffect(() => {

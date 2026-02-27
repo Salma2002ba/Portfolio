@@ -46,7 +46,7 @@ function NavBarGradientBar({ visible }: { visible?: boolean }) {
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const { trackClick } = useAnalyticsContext()
+  useAnalyticsContext() // context may be used by children / tracking
 
   const navItems = [
     { name: 'À propos', link: '#about', icon: <FaUser /> },
