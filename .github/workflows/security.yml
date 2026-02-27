@@ -1,0 +1,189 @@
+# Security : scan image (Trivy), SBOM (Syft), hardening, smoke
+# Bloque sur CRITICAL/HIGH. Obligatoire avant déploiement.
+# Voir docs/04-security.md
+
+name: Security
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+concurrency:
+  group: security-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  IMAGE_NAME: portfolio
+  IMAGE_TAG: security
+
+jobs:
+  security:
+    name: security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          load: true
+          tags: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # ---------- Trivy : vulnérabilités ----------
+      - name: Trivy — vulnérabilités (OS + npm)
+        id: trivy_vuln
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          format: 'table'
+          exit-code: '1'
+          severity: 'CRITICAL,HIGH'
+          vuln-type: 'os,library'
+          output: trivy-vuln.txt
+        continue-on-error: false
+
+      - name: Trivy — rapport vulnérabilités (résumé)
+        if: always()
+        run: |
+          echo "### Trivy — Vulnérabilités (CRITICAL/HIGH)" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat trivy-vuln.txt >> $GITHUB_STEP_SUMMARY 2>/dev/null || echo "Aucun rapport (scan OK ou erreur)."
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: Trivy — export SARIF
+        if: always()
+        run: |
+          trivy image --format sarif --output trivy-results.sarif ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} || true
+
+      - name: Trivy — export JSON
+        if: always()
+        run: |
+          trivy image --format json --output trivy-results.json ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} || true
+
+      - name: Upload Trivy SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        if: always() && hashFiles('trivy-results.sarif') != ''
+        with:
+          sarif_file: trivy-results.sarif
+          category: trivy-image
+
+      # ---------- Trivy config (Dockerfile) ----------
+      - name: Trivy — config (Dockerfile / fichiers)
+        id: trivy_config
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'config'
+          scan-ref: '.'
+          format: 'table'
+          exit-code: '1'
+          output: trivy-config.txt
+        continue-on-error: false
+
+      - name: Trivy config — résumé
+        if: always()
+        run: |
+          echo "### Trivy — Config (Dockerfile)" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat trivy-config.txt >> $GITHUB_STEP_SUMMARY 2>/dev/null || echo "Aucun rapport."
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      # ---------- SBOM (Syft) ----------
+      - name: Install Syft
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+
+      - name: Syft — générer SBOM (SPDX JSON)
+        run: |
+          syft ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} -o spdx-json=sbom.spdx.json
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-spdx
+          path: sbom.spdx.json
+
+      - name: SBOM — top 10 paquets
+        run: |
+          echo "### SBOM — 10 premiers paquets" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          (jq -r '.packages[:10] | .[] | "\(.name) @ \(.versionInfo // "?")"' sbom.spdx.json 2>/dev/null || echo "N/A") >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: SBOM — vérifier absence de licence GPL
+        id: sbom_gpl
+        run: |
+          GPL=$(jq -r '[.packages[]? | .licenseConcluded // .licenseDeclared // "" | select(. != "" and (. | test("GPL|AGPL|LGPL"; "i")))] | length' sbom.spdx.json 2>/dev/null || echo "0")
+          if [ "$GPL" != "0" ] && [ -n "$GPL" ]; then
+            echo "::error::Licence GPL/AGPL/LGPL détectée dans le SBOM. Politique : refus."
+            exit 1
+          fi
+          echo "Aucune licence GPL/AGPL/LGPL détectée."
+
+      # ---------- Hardening ----------
+      - name: Hardening — utilisateur non-root
+        id: hardening_user
+        run: |
+          USER=$(docker inspect --format '{{.Config.User}}' ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }})
+          if [ -z "$USER" ] || [ "$USER" = "<no value>" ]; then
+            echo "::error::L'image tourne en root (Config.User vide). Exiger USER non-root."
+            exit 1
+          fi
+          echo "User: $USER"
+
+      - name: Hardening — HEALTHCHECK présent
+        id: hardening_health
+        run: |
+          HC=$(docker inspect --format '{{.Config.Healthcheck}}' ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }})
+          if [ -z "$HC" ] || [ "$HC" = "<nil>" ]; then
+            echo "::error::Aucun HEALTHCHECK défini dans l'image."
+            exit 1
+          fi
+          echo "HEALTHCHECK présent."
+
+      - name: Hardening — taille image
+        id: hardening_size
+        run: |
+          BYTES=$(docker image inspect --format '{{.Size}}' ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }})
+          MB=$((BYTES / 1024 / 1024))
+          echo "size_mb=$MB" >> $GITHUB_OUTPUT
+          echo "### Taille image" >> $GITHUB_STEP_SUMMARY
+          echo "**${MB} MB**" >> $GITHUB_STEP_SUMMARY
+
+      # ---------- Smoke (après tous les contrôles) ----------
+      - name: Smoke test
+        id: smoke
+        run: |
+          docker run -d -p 3000:3000 --name smoke ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          sleep 10
+          code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000)
+          docker stop smoke
+          docker rm smoke
+          [ "$code" = "200" ] || (echo "Expected 200, got $code" && exit 1)
+
+      - name: Job summary
+        if: always()
+        run: |
+          echo "## Security" >> $GITHUB_STEP_SUMMARY
+          echo "| Étape | Statut |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Trivy vuln (CRITICAL/HIGH) | ${{ steps.trivy_vuln.outcome == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Trivy config | ${{ steps.trivy_config.outcome == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| SBOM + licence (no GPL) | ${{ steps.sbom_gpl.outcome == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Non-root | ${{ steps.hardening_user.outcome == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| HEALTHCHECK | ${{ steps.hardening_health.outcome == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Smoke | ${{ steps.smoke.outcome == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
