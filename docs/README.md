@@ -1,6 +1,6 @@
 # Docs DevOps / Cloud — Portfolio
 
-**Status global :** ✅ Code & Docker & CI & Security → Registry → IaC → Deploy → Monitor
+**Status global :** ✅ Code, Docker, CI, Security (terminé et documenté) → Registry → IaC → Deploy → Monitor
 
 Documentation progressive « au fil de l'avancement ». Chaque chapitre reflète l'état réel du repo.
 
@@ -13,7 +13,7 @@ Documentation progressive « au fil de l'avancement ». Chaque chapitre reflète
 | 1 | Code | [01-code.md](01-code.md) | Stack, scripts, déploiement GitHub Pages |
 | 2 | Docker | [02-docker.md](02-docker.md) | Dockerfile multi-stage, .dockerignore, usage |
 | 3 | CI | [03-ci.md](03-ci.md) | Lint, tests, build, docker build, smoke |
-| 4 | Security | [04-security.md](04-security.md) | Trivy, SBOM Syft, policies |
+| 4 | Security | [04-security.md](04-security.md) | Trivy, SBOM Syft, hardening, politique ; **étape terminée et documentée** |
 | 5 | Registry | [05-registry.md](05-registry.md) | GHCR puis ECR |
 | 6 | Infrastructure | [06-terraform.md](06-terraform.md) | Terraform (réseau, ECR, ECS…) |
 | 7 | Deploy AWS | [07-deploy-aws.md](07-deploy-aws.md) | ECS Fargate, tâches, services |
@@ -28,7 +28,8 @@ Code → Docker → CI → Security → Registry → IaC (Terraform) → Deploy 
   ✅      ✅      ✅       ✅         ⏳           ⏳               ⏳              ⏳
 ```
 
-**Prochaine étape :** Registry (GHCR puis ECR). Voir [04-security.md](04-security.md) et [05-registry.md](05-registry.md).
+**Prochaine étape :** Registry (GHCR puis ECR). Voir [05-registry.md](05-registry.md).  
+Security : aucune évolution prévue pour l’instant ; reprise possible plus tard (exclusions, SAST, etc.). Détails dans [04-security.md](04-security.md).
 
 ---
 
