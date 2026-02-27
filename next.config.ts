@@ -1,7 +1,10 @@
 import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev'
 
-// Dev only (skip in GitHub Pages build)
-if (process.env.GITHUB_PAGES !== 'true') {
+// Dev only (skip in GitHub Pages build et lors du build Docker / CI)
+if (
+  process.env.GITHUB_PAGES !== 'true' &&
+  process.env.DOCKER_BUILD !== '1'
+) {
   setupDevPlatform().catch(console.error)
 }
 
@@ -22,6 +25,8 @@ const nextConfig: NextConfig = {
     assetPrefix: basePath ? `${basePath}/` : undefined,
     images: { unoptimized: true },
   }),
+  // Standalone output for Docker/production (réduit la taille de l'image)
+  ...(!isGitHubPages && { output: 'standalone' }),
   webpack: (config) => {
     return config
   },

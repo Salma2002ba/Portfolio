@@ -1,0 +1,59 @@
+# Dépendances (réinstallées dans le conteneur)
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Builds et artefacts locaux
+.next
+out
+dist
+build
+.turbo
+
+# Versioning et IDE
+.git
+.gitignore
+.gitattributes
+.cursor
+.vscode
+*.md
+!README.md
+
+# Tests et couverture
+coverage
+.nyc_output
+*.test.*
+*.spec.*
+__tests__
+__mocks__
+jest.config.*
+playwright.config.*
+cypress.config.*
+.e2e
+
+# Environnement et secrets
+.env
+.env.*
+!.env.example
+
+# Documentation et scripts non nécessaires au build
+docs
+docker-compose*
+.docker
+
+# OS et divers
+.DS_Store
+Thumbs.db
+*.log
+*.bat
+*.cmd
+
+# Cloudflare / déploiements alternatifs (évite de polluer le contexte)
+.wrangler
+.dev.vars
+
+# Fichiers de configuration optionnels (non requis pour le build Docker)
+fix-commit-author.bat
+agent-transcripts
