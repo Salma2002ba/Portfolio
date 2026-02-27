@@ -6,6 +6,19 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
+ * Pure util: build a URL-safe slug from a string (testable without DOM/env).
+ */
+export function slugify(str: string): string {
+  return str
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
+/**
  * Base path for static export (e.g. GitHub Pages: /Portfolio). Empty when served at root.
  * In the browser, fallback: detect from window.location when env is missing (e.g. old cache).
  */

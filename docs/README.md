@@ -1,6 +1,6 @@
 # Docs DevOps / Cloud — Portfolio
 
-**Status global :** ✅ Code & Docker · ⏳ CI (workflow créé) → Security → Registry → IaC → Deploy → Monitor
+**Status global :** ✅ Code & Docker & CI (Jest + 4 jobs) → Security → Registry → IaC → Deploy → Monitor
 
 Documentation progressive « au fil de l'avancement ». Chaque chapitre reflète l'état réel du repo.
 
@@ -25,10 +25,10 @@ Documentation progressive « au fil de l'avancement ». Chaque chapitre reflète
 
 ```
 Code → Docker → CI → Security → Registry → IaC (Terraform) → Deploy AWS (ECS) → Monitoring
-  ✅      ✅      ⏳       ⏳         ⏳           ⏳               ⏳              ⏳
+  ✅      ✅      ✅       ⏳         ⏳           ⏳               ⏳              ⏳
 ```
 
-**Prochaine étape :** Valider la CI (push/PR sur `main` pour lancer le workflow), puis enchaîner Security (Trivy/Syft) et Registry (GHCR). Voir [03-ci.md](03-ci.md).
+**Prochaine étape :** Security (Trivy/Syft) puis Registry (GHCR). Voir [03-ci.md](03-ci.md).
 
 ---
 
