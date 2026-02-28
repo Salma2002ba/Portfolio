@@ -1,6 +1,6 @@
 # Docs DevOps / Cloud — Portfolio
 
-**Status global :** ✅ Code, Docker, CI, Security (terminé et documenté) → Registry → IaC → Deploy → Monitor
+**Status global :** ✅ Code, Docker, CI, Security, Registry (GHCR), IaC (Terraform MVP) → Deploy ECS / Monitor
 
 Documentation progressive « au fil de l'avancement ». Chaque chapitre reflète l'état réel du repo.
 
@@ -15,7 +15,7 @@ Documentation progressive « au fil de l'avancement ». Chaque chapitre reflète
 | 3 | CI | [03-ci.md](03-ci.md) | Lint, tests, build, docker build, smoke |
 | 4 | Security | [04-security.md](04-security.md) | Trivy, SBOM Syft, hardening, politique ; **étape terminée et documentée** |
 | 5 | Registry | [05-registry.md](05-registry.md) | GHCR puis ECR |
-| 6 | Infrastructure | [06-terraform.md](06-terraform.md) | Terraform (réseau, ECR, ECS…) |
+| 6 | Infrastructure | [06-terraform.md](06-terraform.md) | Terraform (VPC, ALB, ECS, ECR) — déploiement : [CLOUD_AWS.md](CLOUD_AWS.md) |
 | 7 | Deploy AWS | [07-deploy-aws.md](07-deploy-aws.md) | ECS Fargate, tâches, services |
 | 8 | Monitoring | [08-monitoring.md](08-monitoring.md) | CloudWatch, alerting |
 
@@ -24,12 +24,12 @@ Documentation progressive « au fil de l'avancement ». Chaque chapitre reflète
 ## Roadmap
 
 ```
-Code → Docker → CI → Security → Registry → IaC (Terraform) → Deploy AWS (ECS) → Monitoring
-  ✅      ✅      ✅       ✅         ⏳           ⏳               ⏳              ⏳
+Code → Docker → CI → Security → Registry → IaC → Deploy AWS → Monitoring
+  ✅      ✅      ✅       ✅         ✅       ✅        ✅           ✅ (MVP)
 ```
 
-**Prochaine étape :** Registry (GHCR puis ECR). Voir [05-registry.md](05-registry.md).  
-Security : aucune évolution prévue pour l’instant ; reprise possible plus tard (exclusions, SAST, etc.). Détails dans [04-security.md](04-security.md).
+**Infra AWS** : [CLOUD_AWS.md](CLOUD_AWS.md) (déploiement Terraform), [ARCHITECTURE.md](ARCHITECTURE.md) (pipeline).  
+**Prochaines étapes** : HTTPS (ACM), OIDC GitHub→AWS, pipeline push ECR + deploy ECS auto.
 
 ---
 
