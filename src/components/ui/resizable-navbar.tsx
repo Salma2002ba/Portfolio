@@ -264,6 +264,7 @@ export const NavbarLogo = ({ isScrolled }: { isScrolled: boolean }) => {
           alt=""
           width={32}
           height={32}
+          unoptimized
           className="h-full w-full object-cover object-[center_28%]"
         />
       </span>

@@ -103,6 +103,7 @@ const HeroContent: FC = () => {
                 alt=""
                 width={192}
                 height={192}
+                unoptimized
                 className="absolute inset-0 h-full w-full object-cover object-[center_28%]"
                 priority
                 sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
