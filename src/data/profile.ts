@@ -149,8 +149,8 @@ export const profile: ProfileData = {
     },
   ],
   links: {
-    github: 'https://github.com',
-    linkedin: 'https://www.linkedin.com/in',
+    github: 'https://github.com/Salma2002ba/',
+    linkedin: 'https://www.linkedin.com/in/salma-baba-353aaa200/',
     email: 'salma2002ba@gmail.com',
     devto: '',
   },
